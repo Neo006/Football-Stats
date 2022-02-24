@@ -1,4 +1,16 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchLaLiga } from '../../api/leaugesService';
+import { setLaLiga } from '../../redux/actions/leaugesActions';
+
 function HomePreview() {
+  const leauges = useSelector((state) => state.leauges);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLaLiga());
+  }, [dispatch]);
+
   return (
     <div className="relative items-center justify-center w-full overflow-x-hidden lg:pt-40 lg:pb-40 xl:pt-40 xl:pb-64">
       <div className="container flex flex-col items-center justify-between h-full max-w-6xl px-8 mx-auto -mt-32 lg:flex-row xl:px-0">
