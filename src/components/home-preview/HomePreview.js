@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchLaLiga } from '../../api/leaugesService';
-import { setLaLiga } from '../../redux/actions/leaugesActions';
+import { fetchLigues } from '../../api/leaugesService';
 
 function HomePreview() {
   const leauges = useSelector((state) => state.leauges);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchLaLiga());
+    dispatch(fetchLigues());
   }, [dispatch]);
 
   return (
