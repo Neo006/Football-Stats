@@ -1,12 +1,5 @@
 import axios from 'axios';
-import {
-  setLaLiga,
-  setPremierLeauge,
-  setSerieA,
-  setBundesliga,
-  setLigue1,
-  setEredivisie,
-} from '../redux/actions/leaugesActions';
+import { setLaLiga, setPremierLeauge, setSerieA, setBundesliga } from '../redux/actions/leaugesActions';
 
 const URL = 'https://v3.football.api-sports.io';
 

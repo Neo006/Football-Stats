@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 function LeaugeItem(data) {
-  console.log(data.data);
   return (
     <div className="leauge-item w-full max-w-md p-4 mx-auto mb-0 sm:mb-16 lg:mb-0 lg:w-1/3">
       <div className="relative flex flex-col items-center justify-center w-full h-full p-20 mr-5 rounded-lg">
