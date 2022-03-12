@@ -1,4 +1,16 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchLigues } from '../../api/leaugesService';
+import LeaugeItem from '../leauge-item/LeaugeItem';
+
 function Leauges() {
+  const leaugesState = useSelector((state) => state.leauges);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLigues());
+  }, []);
+
   return (
     <div
       id="features"
@@ -10,7 +22,10 @@ function Leauges() {
           Built and Designed with you in Mind
         </h3>
         <div className="flex flex-col w-full mt-0 lg:flex-row sm:mt-10 lg:mt-20">
-          <div className="w-full max-w-md p-4 mx-auto mb-0 sm:mb-16 lg:mb-0 lg:w-1/3">
+          {leaugesState.leauges.length &&
+            leaugesState.leauges.map((item) => <LeaugeItem key={item.league.id} data={item} />)}
+
+          {/* <div className="w-full max-w-md p-4 mx-auto mb-0 sm:mb-16 lg:mb-0 lg:w-1/3">
             <div className="relative flex flex-col items-center justify-center w-full h-full p-20 mr-5 rounded-lg">
               <svg
                 className="absolute w-full h-full text-gray-100 fill-current"
@@ -235,7 +250,7 @@ function Leauges() {
                 Learn More
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

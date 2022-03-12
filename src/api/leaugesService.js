@@ -17,7 +17,7 @@ const LeaugesEndpoints = {
 const config = {
   headers: {
     'x-rapidapi-host': 'v3.football.api-sports.io',
-    'x-rapidapi-key': '4c15e3b3b2f276985e09cfa6a6d0830b',
+    'x-rapidapi-key': 'fc954d0c18b2cb78ac98385285d46f7d',
   },
   params: {
     season: 2021,
@@ -59,24 +59,6 @@ export function fetchLigues() {
       .then(({ data }) => {
         if (!data.errors.length) {
           dispatch(setBundesliga(data.response[0]));
-        }
-      })
-      .then(() => {
-        config.params.id = 61;
-        return axios.get(URL + LeaugesEndpoints.getLeauges, config);
-      })
-      .then(({ data }) => {
-        if (!data.errors.length) {
-          dispatch(setLigue1(data.response[0]));
-        }
-      })
-      .then(() => {
-        config.params.id = 88;
-        return axios.get(URL + LeaugesEndpoints.getLeauges, config);
-      })
-      .then(({ data }) => {
-        if (!data.errors.length) {
-          dispatch(setEredivisie(data.response[0]));
         }
       });
   };
