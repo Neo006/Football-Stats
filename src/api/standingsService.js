@@ -17,7 +17,7 @@ const config = {
   },
 };
 
-export function fetchLigues() {
+export function fetchStandings() {
   return function (dispatch) {
     config.params.league = 140;
     return axios.get(URL + StandingsEndpoints.getStandings, config).then(({ data }) => {
