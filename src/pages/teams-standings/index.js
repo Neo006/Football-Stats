@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 import { fetchStandings } from '../../api/standingsService';
 import Layout from '../../components/layout/Layout';
+import { useRouter } from 'next/router';
 
 export default function TeamsStandings() {
+  const router = useRouter();
+  const { leaugeId } = router.query;
   const standingsState = useSelector((state) => state.standings);
   const dispatch = useDispatch();
 
@@ -13,7 +16,7 @@ export default function TeamsStandings() {
   };
 
   useEffect(() => {
-    dispatch(fetchStandings());
+    dispatch(fetchStandings(leaugeId));
   }, []);
 
   return (

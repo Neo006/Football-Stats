@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setLaLigaStandings } from '../redux/actions/standingActions';
+import { setLeaugeStandings } from '../redux/actions/standingActions';
 
 const URL = 'https://v3.football.api-sports.io';
 
@@ -17,12 +17,12 @@ const config = {
   },
 };
 
-export function fetchStandings() {
+export function fetchStandings(leaugeid) {
   return function (dispatch) {
-    config.params.league = 140;
+    config.params.league = leaugeid;
     return axios.get(URL + StandingsEndpoints.getStandings, config).then(({ data }) => {
       if (!data.errors.length) {
-        dispatch(setLaLigaStandings(data.response[0]));
+        dispatch(setLeaugeStandings(data.response[0]));
       }
     });
   };

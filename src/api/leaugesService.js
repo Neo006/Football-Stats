@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setLaLiga, setPremierLeauge, setSerieA, setBundesliga } from '../redux/actions/leaugesActions';
+import { LeaugeTypes } from '../models/leaugeTypes';
 
 const URL = 'https://v3.football.api-sports.io';
 
@@ -19,7 +20,7 @@ const config = {
 
 export function fetchLigues() {
   return function (dispatch) {
-    config.params.id = 140;
+    config.params.id = LeaugeTypes.laLiga;
     return axios
       .get(URL + LeaugesEndpoints.getLeauges, config)
       .then(({ data }) => {
@@ -28,7 +29,7 @@ export function fetchLigues() {
         }
       })
       .then(() => {
-        config.params.id = 39;
+        config.params.id = LeaugeTypes.premierLeauge;
         return axios.get(URL + LeaugesEndpoints.getLeauges, config);
       })
       .then(({ data }) => {
@@ -37,7 +38,7 @@ export function fetchLigues() {
         }
       })
       .then(() => {
-        config.params.id = 135;
+        config.params.id = LeaugeTypes.serieA;
         return axios.get(URL + LeaugesEndpoints.getLeauges, config);
       })
       .then(({ data }) => {
@@ -46,7 +47,7 @@ export function fetchLigues() {
         }
       })
       .then(() => {
-        config.params.id = 78;
+        config.params.id = LeaugeTypes.bundesliga;
         return axios.get(URL + LeaugesEndpoints.getLeauges, config);
       })
       .then(({ data }) => {
